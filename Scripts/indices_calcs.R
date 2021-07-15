@@ -4,6 +4,8 @@
 #arthur.barros@wildlife.ca.gov
 #last updated 2/1/2021
 rm( list = ls()) #clear env
+library(tidyr)
+library(dplyr)
 
 #Read in clean catch matrices
 CB_clean<-readRDS("Data/CB_clean.rds")
@@ -26,16 +28,19 @@ Mysid_orders<-c("Mysida")
 
 #filter by target parameters
 CB_targets<-CB_clean%>%
-  filter(Order%in%CB_orders,ZooCode%in%target_adults,Current=="yes")
+  filter(Order%in%CB_orders,Current=="yes")
 Pump_targets<-Pump_clean%>%
-  filter(Order%in%Pump_orders,ZooCode%in%target_adults,Current=="yes")
+  filter(Order%in%Pump_orders,Current=="yes")
 Mysid_targets<-Mysid_clean%>%
-  filter(Order%in%Mysid_orders,ZooCode%in%target_adults,Current=="yes")
+  filter(Order%in%Mysid_orders,Current=="yes")
 
 #Join all catch matrices into one
 Zoop_all<-CB_targets%>%
   rbind(Pump_targets)%>%
   rbind(Mysid_targets)
+
+
+Zoop_all$CommonName<-ifelse(Zoop_all$ZooCode%in%target_adults,Zoop_all$CommonName,"Other")
 
 ###################################
 #Calculate Annual Abundance indices
@@ -152,3 +157,4 @@ Year_seasonal_regional_indices<-Year_seasonal_regional%>%
 
 #save Year_seasonal_regional_indices for figure creation
 saveRDS(Year_seasonal_regional_indices,"Data/Year_spatial_indices.rds")
+

@@ -65,11 +65,11 @@ Mysid_clean<-readRDS("Data/Mysid_clean.rds")
 Pump_clean<-readRDS("Data/Pump_clean.rds")
 
 #create tables with each sampling event and gear type
-CB_tows<-unique(select(CB_clean,Year,Survey,StationNZ))
+CB_tows<-unique(select(CB_clean,Year,Survey,SurveyRep,StationNZ))
 CB_tows$gear<-"CB" #ihclude column with gear type
-Pump_tows<-unique(select(Pump_clean,Year,Survey,StationNZ))
+Pump_tows<-unique(select(Pump_clean,Year,Survey,SurveyRep,StationNZ))
 Pump_tows$gear<-"Pump"
-Mysid_tows<-unique(select(Mysid_clean,Year,Survey,StationNZ))
+Mysid_tows<-unique(select(Mysid_clean,Year,Survey,SurveyRep,StationNZ))
 Mysid_tows$gear<-"Mysid"
 
 All_tows<-CB_tows%>%

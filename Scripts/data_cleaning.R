@@ -98,13 +98,13 @@ Pump_matrix_long<-Pump_matrix_long%>%
   filter(Year>=1974)
 
 #select necessary columns
-CB_clean<-select(CB_matrix_long,SurveyCode,Core,Current,Year,Survey,SampleDate,StationNZ,
+CB_clean<-select(CB_matrix_long,SurveyCode,Core,Current,Year,Survey,SurveyRep,SampleDate,StationNZ,
                 Secchi,Chl_a,Temperature,ECSurfacePreTow,ECBottomPreTow,
                 lat,lon,km,ZooCode,CPUE,NativeOrIntro,Phylum,Class,Order,Family,CommonName)
-Mysid_clean<-select(Mysid_matrix_long,SurveyCode,Core,Current,Year,Survey,SampleDate,StationNZ,
+Mysid_clean<-select(Mysid_matrix_long,SurveyCode,Core,Current,Year,Survey,SurveyRep,SampleDate,StationNZ,
                    Secchi,Chl_a,Temperature,ECSurfacePreTow,ECBottomPreTow,
                    lat,lon,km,ZooCode,CPUE,NativeOrIntro,Phylum,Class,Order,Family,CommonName)
-Pump_clean<-select(Pump_matrix_long,SurveyCode,Core,Current,Year,Survey,SampleDate,StationNZ,
+Pump_clean<-select(Pump_matrix_long,SurveyCode,Core,Current,Year,Survey,SurveyRep,SampleDate,StationNZ,
                   Secchi,Chl_a,Temperature,ECSurfacePreTow,ECBottomPreTow,
                   lat,lon,km,ZooCode,CPUE,NativeOrIntro,Phylum,Class,Order,Family,CommonName)
 
